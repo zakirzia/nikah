@@ -112,11 +112,6 @@ hr.sep{
   margin:0 0 10px;
   font-family: Georgia, serif;
 }
-.event .meta{
-  color:var(--muted);
-  font-size:14px;
-  margin:0 0 10px;
-}
 .event .time{
   display:inline-flex;
   align-items:center;
@@ -156,16 +151,12 @@ a.btn{
   border:1px solid var(--line);
   background:rgba(255,255,255,.68);
   color:var(--text);
-  transition:transform .06s ease, background .2s ease, filter .2s ease;
 }
-a.btn:hover{ background:rgba(255,255,255,.85); }
-a.btn:active{ transform:translateY(1px); }
 a.btn.primary{
   background:linear-gradient(135deg, rgba(176,138,91,1), rgba(214,184,140,1));
   color:white;
   border-color:transparent;
 }
-a.btn.primary:hover{ filter:brightness(.98); }
 
 iframe{
   width:100%;
@@ -179,67 +170,131 @@ footer{
   color:var(--muted);
 }
 
-@media (max-width:700px){
-  h1{font-size:44px}
-  .card{padding:26px}
+/* ===== Таймер ===== */
+.countdown-wrap{max-width:980px;margin:0 auto;padding:0 20px;}
+.countdown-title{font-size:32px;margin:0 0 18px;font-weight:700;color:rgba(58,47,42,.75);}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:560px;margin:0 auto;}
+@media (max-width:520px){.countdown{grid-template-columns:repeat(2,1fr);}}
+.timebox{background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:16px;padding:14px 12px;box-shadow:0 10px 26px rgba(0,0,0,0.06);}
+.timebox .num{font-family:Georgia,serif;font-size:34px;font-weight:700;}
+.timebox .lbl{font-size:12px;color:var(--muted);}
+
+/* ====== RSVP форма (красивая, как в Google Forms) ====== */
+.rsvp-form{
+  max-width:760px;
+  margin:18px auto 0;
+  text-align:left;
 }
 
-/* ====== ТАЙМЕР (добавлено) ====== */
-.countdown-wrap{
-  max-width:980px;
-  margin:0 auto;
-  padding:0 20px;
-}
-
-.countdown-title{
-  font-size:32px;
-  margin:0 0 18px;
-  font-weight:700;
-  color:rgba(58,47,42,.75);
-}
-
-.countdown{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:14px;
-  max-width:560px;
-  margin:0 auto;
-}
-
-@media (max-width:520px){
-  .countdown{ grid-template-columns:repeat(2, 1fr); }
-}
-
-.timebox{
-  background:rgba(255,255,255,.75);
+.form-card{
+  background:rgba(255,255,255,.90);
   border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px 18px 16px;
+  box-shadow:0 10px 26px rgba(0,0,0,.06);
+}
+
+.form-row{ margin-top:14px; }
+.form-row:first-child{ margin-top:0; }
+
+.label{
+  display:block;
+  font-weight:650;
+  margin:0 0 8px;
+  color:rgba(58,47,42,.92);
+}
+
+.req{ color:#c04b3a; margin-left:4px; }
+
+.input, .textarea{
+  width:100%;
+  padding:12px 12px;
+  border-radius:14px;
+  border:1px solid rgba(176,138,91,.25);
+  background:rgba(250,244,239,.65);
+  outline:none;
+  font-size:16px;
+  color:var(--text);
+}
+
+.input:focus, .textarea:focus{
+  border-color: rgba(176,138,91,.55);
+  box-shadow:0 0 0 4px rgba(176,138,91,.12);
+  background:rgba(250,244,239,.8);
+}
+
+.textarea{ min-height:92px; resize:vertical; }
+
+.group{
+  padding:14px 14px 12px;
   border-radius:16px;
-  padding:14px 12px 12px;
-  box-shadow:0 10px 26px rgba(0,0,0,0.06);
+  border:1px solid rgba(176,138,91,.18);
+  background:rgba(250,244,239,.55);
 }
 
-.timebox .num{
-  font-family: Georgia, serif;
-  font-size:34px;
-  font-weight:700;
-  line-height:1;
-  margin-bottom:6px;
+.options{
+  display:grid;
+  gap:10px;
+  margin-top:8px;
 }
 
-.timebox .lbl{
-  font-size:12px;
+.option{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+  font-size:15px;
+  color:rgba(58,47,42,.9);
+}
+
+.option input{ transform:scale(1.05); }
+
+.form-actions{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:flex-start;
+  margin-top:16px;
+  flex-wrap:wrap;
+}
+
+.btn-submit{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:12px 18px;
+  border-radius:14px;
+  border:0;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:650;
+  color:#fff;
+  background:linear-gradient(135deg, rgba(176,138,91,1), rgba(214,184,140,1));
+  box-shadow:0 10px 22px rgba(176,138,91,.25);
+}
+
+.btn-submit:active{ transform:translateY(1px); }
+
+.status{
+  font-size:14px;
   color:var(--muted);
-  letter-spacing:.2px;
 }
-/* ====== /ТАЙМЕР ====== */
-</style>
 
+.helper{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:6px;
+}
+/* ====== /RSVP форма ====== */
+
+</style>
 </head>
 
 <body>
 
 <section>
-  <h1>Саид и Регина</h1>
+ <h1>Саид и Регина</h1>
   <div class="badge"><span class="dot"></span> Никах • 27 марта 2026</div>
   <h2 style="margin-top:16px;">Мы приглашаем вас на наш никах</h2>
   <p>Будем очень рады разделить с вами этот тёплый и важный для нас день 🤍</p>
@@ -257,10 +312,17 @@ footer{
       <div class="event">
         <div class="time">🕌 15:00</div>
         <div class="title">Церемония в мечети «Шамиль»</div>
+
         <p class="note">
-          Если вам удобно и вы хотите присутствовать на церемонии — приходите, будем очень рады.
-          Если нет — ничего страшного, ждём вас уже на праздничном ужине.
+          Если вам удобно и вы хотите присутствовать на церемонии — будем очень рады.
+          Если нет — ждём вас уже на праздничном ужине.
         </p>
+
+<p class="note">
+  <strong>Рекомендуемая одежда:</strong><br>
+  для женщин — закрытая одежда и платок<br>
+  для мужчин — закрытая, сдержанная одежда и тюбетейка
+</p>
 
         <div class="actions">
           <a class="btn primary" target="_blank"
@@ -291,89 +353,121 @@ footer{
     <hr class="sep">
 
     <h2>Пожалуйста, подтвердите ваше присутствие на никахе</h2>
-    <p class="note" style="margin-top:-6px;">
-      Это поможет нам лучше организовать день. Спасибо!
-    </p>
+    <p class="note" style="margin-top:-6px;">Это поможет нам лучше организовать день. Спасибо!</p>
 
-    <!-- Google Форма -->
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdUqyvB5YyXQjav6vWZ64T07x9zGPycYDFdb9wMSdvUDr-3YA/viewform?embedded=true"
-            width="640" height="850" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe>
+<form class="rsvp-form" id="rsvp-form">
+  <div class="form-card">
+
+    <div class="form-row">
+      <label class="label" for="name">Имя<span class="req">*</span></label>
+      <input class="input" id="name" name="name" type="text" placeholder="Введите имя и фамилию" required>
+    </div>
+
+    <div class="form-row group">
+      <div class="label">Вы придёте в мечеть?<span class="req">*</span></div>
+      <div class="options" role="radiogroup" aria-label="Вы придёте в мечеть?">
+        <label class="option">
+          <input type="radio" name="mosque" value="Да, с радостью" required>
+          Да, с радостью
+        </label>
+        <label class="option">
+          <input type="radio" name="mosque" value="К сожалению, не смогу" required>
+          К сожалению, не смогу
+        </label>
+      </div>
+      <div class="helper">Церемония в мечети — по желанию</div>
+    </div>
+
+    <div class="form-row group">
+      <div class="label">Вы придёте в ресторан?<span class="req">*</span></div>
+      <div class="options" role="radiogroup" aria-label="Вы придёте в ресторан?">
+        <label class="option">
+          <input type="radio" name="restaurant" value="Да, с радостью" required>
+          Да, с радостью
+        </label>
+        <label class="option">
+          <input type="radio" name="restaurant" value="К сожалению, не смогу" required>
+          К сожалению, не смогу
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label class="label" for="comment">Комментарий (по желанию)</label>
+      <textarea class="textarea" id="comment" name="comment" placeholder="Например: приду +1 / есть аллергия / опоздаю"></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-submit" type="submit">Отправить</button>
+      <span class="status" id="rsvp-status" style="display:none;"></span>
+    </div>
+
+  </div>
+</form>
 
   </div>
 </section>
 
-<!-- ====== ТАЙМЕР В САМЫЙ КОНЕЦ (добавлено) ====== -->
 <section class="countdown-wrap">
   <h2 class="countdown-title">Обратный отсчёт до никаха</h2>
-
-  <div class="countdown" aria-label="Обратный отсчёт">
-    <div class="timebox">
-      <div class="num" id="cd-days">0</div>
-      <div class="lbl">дней</div>
-    </div>
-    <div class="timebox">
-      <div class="num" id="cd-hours">0</div>
-      <div class="lbl">часов</div>
-    </div>
-    <div class="timebox">
-      <div class="num" id="cd-mins">0</div>
-      <div class="lbl">минут</div>
-    </div>
-    <div class="timebox">
-      <div class="num" id="cd-secs">0</div>
-      <div class="lbl">секунд</div>
-    </div>
+  <div class="countdown">
+    <div class="timebox"><div class="num" id="cd-days">0</div><div class="lbl">дней</div></div>
+    <div class="timebox"><div class="num" id="cd-hours">0</div><div class="lbl">часов</div></div>
+    <div class="timebox"><div class="num" id="cd-mins">0</div><div class="lbl">минут</div></div>
+    <div class="timebox"><div class="num" id="cd-secs">0</div><div class="lbl">секунд</div></div>
   </div>
 </section>
-<!-- ====== /ТАЙМЕР ====== -->
 
 <footer>
   С любовью, Саид и Регина 💕
 </footer>
 
 <script>
-  // Дата/время начала никаха в мечети: 27.03.2026 15:00 (Казань)
-  // Чтобы избежать “съезда” из-за часовых поясов, задаём вручную смещение +03:00
-  const target = new Date("2026-03-27T15:00:00+03:00").getTime();
+const target = new Date("2026-03-27T15:00:00+03:00").getTime();
+const d=document.getElementById("cd-days"),
+      h=document.getElementById("cd-hours"),
+      m=document.getElementById("cd-mins"),
+      s=document.getElementById("cd-secs");
+function pad(n){return String(n).padStart(2,"0")}
+setInterval(()=>{
+  let diff=target-Date.now();
+  if(diff<0) diff=0;
+  const days=Math.floor(diff/86400000);
+  diff%=86400000;
+  const hours=Math.floor(diff/3600000);
+  diff%=3600000;
+  const mins=Math.floor(diff/60000);
+  const secs=Math.floor((diff%60000)/1000);
+  d.textContent=days;
+  h.textContent=pad(hours);
+  m.textContent=pad(mins);
+  s.textContent=pad(secs);
+},1000);
+</script>
 
-  const elD = document.getElementById("cd-days");
-  const elH = document.getElementById("cd-hours");
-  const elM = document.getElementById("cd-mins");
-  const elS = document.getElementById("cd-secs");
+<script>
+  const form = document.getElementById("rsvp-form");
+  const statusEl = document.getElementById("rsvp-status");
 
-  function pad2(n){ return String(n).padStart(2, "0"); }
+  // ВАЖНО: вставь сюда URL твоего Apps Script Web App (/exec)
+  const scriptURL = "https://script.google.com/macros/s/AKfycbzjhSzsT68fNvDqEgdaTNKJcBFRtws1ZE6smdzv67znoqGZvd7g1DGKucFqWezmVhCr/exec";
 
-  function tick(){
-    const now = Date.now();
-    let diff = target - now;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    if (diff <= 0){
-      elD.textContent = "0";
-      elH.textContent = "00";
-      elM.textContent = "00";
-      elS.textContent = "00";
-      return;
+    statusEl.style.display = "inline";
+    statusEl.textContent = "Отправляем…";
+
+    try{
+      const data = new FormData(form);
+      await fetch(scriptURL, { method: "POST", body: data });
+
+      statusEl.textContent = "Спасибо! Мы получили ваш ответ 🤍";
+      form.reset();
+    }catch(err){
+      statusEl.textContent = "Не получилось отправить. Попробуйте ещё раз.";
     }
-
-    const days = Math.floor(diff / (1000*60*60*24));
-    diff -= days * (1000*60*60*24);
-
-    const hours = Math.floor(diff / (1000*60*60));
-    diff -= hours * (1000*60*60);
-
-    const mins = Math.floor(diff / (1000*60));
-    diff -= mins * (1000*60);
-
-    const secs = Math.floor(diff / 1000);
-
-    elD.textContent = String(days);
-    elH.textContent = pad2(hours);
-    elM.textContent = pad2(mins);
-    elS.textContent = pad2(secs);
-  }
-
-  tick();
-  setInterval(tick, 1000);
+  });
 </script>
 
 </body>
